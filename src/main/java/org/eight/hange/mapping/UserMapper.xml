@@ -267,4 +267,11 @@
       state = #{state,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="login" parameterType="org.eight.hange.pojo.User" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from et_user
+    where `username` = #{username,jdbcType=VARCHAR}
+    and `password` = #{password,jdbcType=VARCHAR}
+  </select>
 </mapper>

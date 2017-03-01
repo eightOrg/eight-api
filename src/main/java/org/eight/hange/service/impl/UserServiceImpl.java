@@ -11,10 +11,16 @@ import org.springframework.stereotype.Service;
  */
 @Service("userService")
 public class UserServiceImpl implements UserService {
+
     @Autowired
     private UserMapper userMapper;
 
     public User getUserById(int userId) {
         return userMapper.selectByPrimaryKey(userId);
+    }
+
+    @Override
+    public User login(User userLogin) {
+        return userMapper.login(userLogin);
     }
 }

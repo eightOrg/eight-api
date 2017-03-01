@@ -7,8 +7,10 @@
                         http://www.springframework.org/schema/context
                         http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-    <!-- 自动扫描 -->
-    <context:component-scan base-package="org.eight.hange"/>
+    <!-- 配置扫描注解,不扫描@Controller注解 use-default-filters="true" 默认为true-->
+    <context:component-scan base-package="org.eight.hange" >
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
     <!-- 引入配置文件 -->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

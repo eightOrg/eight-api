@@ -7,4 +7,6 @@ import org.eight.hange.pojo.User;
  */
 public interface UserService {
     User getUserById(int userId);
+
+    User login(User userLogin);
 }
