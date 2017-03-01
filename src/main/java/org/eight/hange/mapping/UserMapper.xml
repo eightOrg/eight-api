@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.eight.hange.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="org.eight.hange.pojo.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="mobilephone" property="mobilephone" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="areaId" property="areaid" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="exp" property="exp" jdbcType="INTEGER" />
+    <result column="gold" property="gold" jdbcType="INTEGER" />
+    <result column="picture" property="picture" jdbcType="VARCHAR" />
+    <result column="monIncome" property="monincome" jdbcType="DECIMAL" />
+    <result column="dayIncome" property="dayincome" jdbcType="DECIMAL" />
+    <result column="monExpense" property="monexpense" jdbcType="DECIMAL" />
+    <result column="dayExpense" property="dayexpense" jdbcType="DECIMAL" />
+    <result column="isRemind" property="isremind" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="BIGINT" />
+    <result column="changeTime" property="changetime" jdbcType="BIGINT" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, username, password, mobilephone, realname, description, areaId, level, exp, gold, 
+    picture, monIncome, dayIncome, monExpense, dayExpense, isRemind, code, createTime, 
+    changeTime, state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from et_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from et_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.eight.hange.pojo.User" >
+    insert into et_user (id, username, password, 
+      mobilephone, realname, description, 
+      areaId, level, exp, 
+      gold, picture, monIncome, 
+      dayIncome, monExpense, dayExpense, 
+      isRemind, code, createTime, 
+      changeTime, state)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{mobilephone,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{areaid,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, #{exp,jdbcType=INTEGER}, 
+      #{gold,jdbcType=INTEGER}, #{picture,jdbcType=VARCHAR}, #{monincome,jdbcType=DECIMAL}, 
+      #{dayincome,jdbcType=DECIMAL}, #{monexpense,jdbcType=DECIMAL}, #{dayexpense,jdbcType=DECIMAL}, 
+      #{isremind,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{createtime,jdbcType=BIGINT}, 
+      #{changetime,jdbcType=BIGINT}, #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.eight.hange.pojo.User" >
+    insert into et_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="mobilephone != null" >
+        mobilephone,
+      </if>
+      <if test="realname != null" >
+        realname,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="areaid != null" >
+        areaId,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="exp != null" >
+        exp,
+      </if>
+      <if test="gold != null" >
+        gold,
+      </if>
+      <if test="picture != null" >
+        picture,
+      </if>
+      <if test="monincome != null" >
+        monIncome,
+      </if>
+      <if test="dayincome != null" >
+        dayIncome,
+      </if>
+      <if test="monexpense != null" >
+        monExpense,
+      </if>
+      <if test="dayexpense != null" >
+        dayExpense,
+      </if>
+      <if test="isremind != null" >
+        isRemind,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="changetime != null" >
+        changeTime,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilephone != null" >
+        #{mobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="exp != null" >
+        #{exp,jdbcType=INTEGER},
+      </if>
+      <if test="gold != null" >
+        #{gold,jdbcType=INTEGER},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="monincome != null" >
+        #{monincome,jdbcType=DECIMAL},
+      </if>
+      <if test="dayincome != null" >
+        #{dayincome,jdbcType=DECIMAL},
+      </if>
+      <if test="monexpense != null" >
+        #{monexpense,jdbcType=DECIMAL},
+      </if>
+      <if test="dayexpense != null" >
+        #{dayexpense,jdbcType=DECIMAL},
+      </if>
+      <if test="isremind != null" >
+        #{isremind,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=BIGINT},
+      </if>
+      <if test="changetime != null" >
+        #{changetime,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.eight.hange.pojo.User" >
+    update et_user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilephone != null" >
+        mobilephone = #{mobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        areaId = #{areaid,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="exp != null" >
+        exp = #{exp,jdbcType=INTEGER},
+      </if>
+      <if test="gold != null" >
+        gold = #{gold,jdbcType=INTEGER},
+      </if>
+      <if test="picture != null" >
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="monincome != null" >
+        monIncome = #{monincome,jdbcType=DECIMAL},
+      </if>
+      <if test="dayincome != null" >
+        dayIncome = #{dayincome,jdbcType=DECIMAL},
+      </if>
+      <if test="monexpense != null" >
+        monExpense = #{monexpense,jdbcType=DECIMAL},
+      </if>
+      <if test="dayexpense != null" >
+        dayExpense = #{dayexpense,jdbcType=DECIMAL},
+      </if>
+      <if test="isremind != null" >
+        isRemind = #{isremind,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=BIGINT},
+      </if>
+      <if test="changetime != null" >
+        changeTime = #{changetime,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.eight.hange.pojo.User" >
+    update et_user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      mobilephone = #{mobilephone,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      areaId = #{areaid,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
+      exp = #{exp,jdbcType=INTEGER},
+      gold = #{gold,jdbcType=INTEGER},
+      picture = #{picture,jdbcType=VARCHAR},
+      monIncome = #{monincome,jdbcType=DECIMAL},
+      dayIncome = #{dayincome,jdbcType=DECIMAL},
+      monExpense = #{monexpense,jdbcType=DECIMAL},
+      dayExpense = #{dayexpense,jdbcType=DECIMAL},
+      isRemind = #{isremind,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=BIGINT},
+      changeTime = #{changetime,jdbcType=BIGINT},
+      state = #{state,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
